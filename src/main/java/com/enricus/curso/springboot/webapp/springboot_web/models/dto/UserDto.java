@@ -1,6 +1,6 @@
 package com.enricus.curso.springboot.webapp.springboot_web.models.dto;
 
-import com.enricus.curso.springboot.webapp.springboot_web.User;
+import com.enricus.curso.springboot.webapp.springboot_web.models.User;
 
 public class UserDto {
     private String title;

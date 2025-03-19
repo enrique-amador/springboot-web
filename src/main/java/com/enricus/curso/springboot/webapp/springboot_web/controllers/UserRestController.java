@@ -1,13 +1,15 @@
 package com.enricus.curso.springboot.webapp.springboot_web.controllers;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.enricus.curso.springboot.webapp.springboot_web.User;
+import com.enricus.curso.springboot.webapp.springboot_web.models.User;
 import com.enricus.curso.springboot.webapp.springboot_web.models.dto.UserDto;
 // import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,6 +27,22 @@ public class UserRestController {
         userDto.setTitle("Hola, mundillo");
 
         return userDto; //devolviendo DTO
+    }
+
+    @GetMapping("/list")
+    public List<User>list(){
+        User user1 = new User("Enrique", "Amador");
+        User user2 = new User("Andres", "Doe");
+        User user3 = new User("Pepe", "Gzz");
+
+        // List<User> users = new ArrayList<>();
+        // users.add(user1);
+        // users.add(user2);
+        // users.add(user3);
+
+        List<User> users = Arrays.asList(user1, user2, user3);
+
+        return users;
     }
 
     @GetMapping(path="/details-map") //@RequestMapping(path="/details", method = RequestMethod.GET)
