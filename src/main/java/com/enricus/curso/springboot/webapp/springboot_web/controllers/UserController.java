@@ -1,9 +1,11 @@
 package com.enricus.curso.springboot.webapp.springboot_web.controllers;
 
-// import java.util.Map;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.enricus.curso.springboot.webapp.springboot_web.models.User;
@@ -23,6 +25,18 @@ public class UserController {
         // model.put("lastname", "Amador");
 
         return "details"; //nombre de la plantilla en resources/templates
+    }
+
+    @GetMapping("/list")
+    public String list(ModelMap model){
+        List<User> users = Arrays.asList(
+            new User("pepa", "gzz", "a@a.com"), 
+            new User("juana", "cubana", "f@a.com"),
+            new User("lalo", "landa", null));
+
+        model.addAttribute("users", users);
+        model.addAttribute("title", "Lista de users");
+        return "list";
     }
     
 }
