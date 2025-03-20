@@ -20,7 +20,7 @@ public class UserRestController {
 
     @GetMapping(path="/details") //@RequestMapping(path="/details", method = RequestMethod.GET)
     public UserDto details(){
-        User user = new User("Enrique", "Amador");
+        User user = new User("Enrique", "Amador", "a@a.com");
         
         UserDto userDto = new UserDto();
         userDto.setUser(user);
@@ -31,9 +31,9 @@ public class UserRestController {
 
     @GetMapping("/list")
     public List<User>list(){
-        User user1 = new User("Enrique", "Amador");
-        User user2 = new User("Andres", "Doe");
-        User user3 = new User("Pepe", "Gzz");
+        User user1 = new User("Enrique", "Amador", "a@a.com");
+        User user2 = new User("Andres", "Doe", "a@a.com");
+        User user3 = new User("Pepe", "Gzz", "a@a.com");
 
         // List<User> users = new ArrayList<>();
         // users.add(user1);
@@ -47,7 +47,7 @@ public class UserRestController {
 
     @GetMapping(path="/details-map") //@RequestMapping(path="/details", method = RequestMethod.GET)
     public Map<String, Object> detailsMap(){
-        User user = new User("Enrique", "Amador");
+        User user = new User("Enrique", "Amador", "a@a.com");
 
         Map<String, Object> body = new HashMap<>();
 
