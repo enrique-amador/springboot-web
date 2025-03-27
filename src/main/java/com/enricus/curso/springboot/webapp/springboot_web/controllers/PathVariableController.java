@@ -75,6 +75,7 @@ public class PathVariableController {
         json.put("valuesMap", valuesMap);
         json.put("product", product);
         json.put("price", price);
+        
         return json;
     }
 }
