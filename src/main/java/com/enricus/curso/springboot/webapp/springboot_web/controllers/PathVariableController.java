@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +45,13 @@ public class PathVariableController {
     private String product;
     @Value("#{${config.valuesMap}.price}")
     private String price;
+
+    //value para inyectar configuraciones
+    //Environment es para inyectar dependencias
+    //Autowired busca componentes de spring almacenados en su contenedor
+    @Autowired
+    private Environment environment;
+
     @GetMapping("/baz/{message}")
     public ParamsDto baz(@PathVariable() String message){ //a;ways has to come
         ParamsDto param = new ParamsDto();
@@ -68,14 +77,16 @@ public class PathVariableController {
     public Map<String, Object> values(@Value("${config.message}") String message){
         Map<String, Object> json = new HashMap<>();
         json.put("code", code);
+        json.put("code2", environment.getProperty("config.code", Long.class));
         json.put("username", username);
         json.put("message", message);
+        json.put("message2", environment.getProperty("config.message"));
         json.put("listOfValues", listOfValues);
         json.put("otherValue", otherValues);
         json.put("valuesMap", valuesMap);
         json.put("product", product);
         json.put("price", price);
-        
+
         return json;
     }
 }
